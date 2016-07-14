@@ -33,7 +33,7 @@ import java.io.InputStream;
 
 /**
  * A <code>JSONSerialiser</code> provides the ability to serialise and deserialise to/from JSON.
- * The serialisation is set to not include nulls or default values.
+ * The serialisation is set to not include nulls.
  */
 public class JSONSerialiser {
     private static final JsonFactory JSON_FACTORY = new JsonFactory();
@@ -41,15 +41,14 @@ public class JSONSerialiser {
     private final ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * Constructs a <code>JSONSerialiser</code> that skips nulls and default values.
+     * Constructs a <code>JSONSerialiser</code> that skips nulls.
      */
     public JSONSerialiser() {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
     }
 
     /**
-     * Constructs a <code>JSONSerialiser</code> that skips nulls and default values and adds the custom serialisers.
+     * Constructs a <code>JSONSerialiser</code> that skips nulls and adds the custom serialisers.
      *
      * @param customTypeSerialisers custom type {@link com.fasterxml.jackson.databind.JsonSerializer}
      */
