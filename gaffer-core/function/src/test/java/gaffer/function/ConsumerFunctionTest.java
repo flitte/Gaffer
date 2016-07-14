@@ -28,7 +28,6 @@ public abstract class ConsumerFunctionTest {
 
     private static ObjectMapper createObjectMapper() {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
         return mapper;
     }
