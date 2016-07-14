@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import gaffer.exception.SerialisationException;
 import sun.misc.IOUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -43,11 +44,10 @@ public class JSONSerialiser {
     private final ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * Constructs a <code>JSONSerialiser</code> that skips nulls and default values.
+     * Constructs a <code>JSONSerialiser</code> that skips nulls.
      */
     public JSONSerialiser() {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
@@ -141,7 +141,7 @@ public class JSONSerialiser {
 
     /**
      * @param stream the {@link java.io.InputStream} containing the bytes of the object to deserialise
-     * @param clazz   the class of the object to deserialise
+     * @param clazz  the class of the object to deserialise
      * @param <T>    the type of the object
      * @return the deserialised object
      * @throws SerialisationException if the bytes fail to deserialise
