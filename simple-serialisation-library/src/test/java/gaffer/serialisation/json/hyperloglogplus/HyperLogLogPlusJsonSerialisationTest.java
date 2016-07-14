@@ -41,7 +41,6 @@ public class HyperLogLogPlusJsonSerialisationTest {
     public void before() {
         mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
 
         final SimpleModule module = new SimpleModule(HyperLogLogPlusJsonConstants.HYPER_LOG_LOG_PLUS_SERIALISER_MODULE_NAME, new Version(1, 0, 0, null));
         module.addSerializer(HyperLogLogPlus.class, new HyperLogLogPlusJsonSerialiser());
