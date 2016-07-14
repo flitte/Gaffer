@@ -22,7 +22,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
 /**
  * A <code>JacksonJsonProvider</code> enables the automatic serialisation and deserialisation to/from JSON.
- * By default the JSON will not include nulls or default values.
+ * By default the JSON will not include nulls.
  * To accept json in the rest api this class must be extended.
  * To register it as a provider add the class annotations: @Provider and @Produces(MediaType.APPLICATION_JSON).
  */
@@ -38,7 +38,6 @@ public abstract class AbstractJacksonJsonProvider extends JacksonJaxbJsonProvide
     protected ObjectMapper createMapper() {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
         return mapper;
     }
 }
